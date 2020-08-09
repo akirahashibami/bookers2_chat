@@ -1,24 +1,3 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.container{
-
-  .chats{
-
-    .chat{
-  		display: flex;
-
-      .row{
-        margin: 0;
-      }
-
-      .chat-box-me{
-
-      }
-
-      .chat-box-opponent{
-        justify-content: flex-end;
-      }
-    }
-  }
-}
