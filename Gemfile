@@ -73,3 +73,4 @@ gem 'kaminari', '~> 1.2.1'
 gem 'jp_prefecture'
 gem 'geocoder'
 gem 'dotenv-rails'
+gem "acts_as_follower", github: "tcocca/acts_as_follower"

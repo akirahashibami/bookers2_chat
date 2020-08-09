@@ -3,7 +3,7 @@
 </div>
 <h4 class="rooms-title">チャット</h4>
 <% @user_rooms.each do |e| %>
-  <%= link_to e.name, user_path(e.user.id) %>
+  <%= link_to e.user.name, user_path(e.user.id) %>
 <% end %>
 <hr>
 <div class="cahts">
@@ -11,15 +11,27 @@
   <div class="chat">
     <% if @chats.present? %>
       <% @chats.each do |c| %>
-      <div class="chat-box">
-        <div class="chat-face">
-          <%= attachment_image_tag c.user.profile_image, size: '40x40' %>
+        <% if c.user.id == current_user.id %>
+        <div class="row chat-box-me">
+          <div class="chat-face">
+            <%= c.user.name %>
+          </div>
+          <div class="chat-message">
+            <%= c.chat %> <br />
+            <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </div>
         </div>
-        <div class="chat-message">
-          <%= c.chat %> <br />
-          <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
+        <% else %>
+        <div class="row chat-box-opponent">
+          <div class="chat-face">
+            <%= c.user.name %>
+          </div>
+          <div class="chat-message">
+            <%= c.chat %> <br />
+            <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </div>
         </div>
-      </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>

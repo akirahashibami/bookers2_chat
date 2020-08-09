@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
     # 現在ログインしているユーザーに対しては、@entry1とし、
     # EntriesテーブルにRoom.createで作成された@roomにひもづくidと、
     # 現在ログインしているユーザーのidを保存させる記述をします。
-    @user_room2 = UserRoom.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
+    @user_room2 = UserRoom.create(params.require(:user_room).permit(:user_id, :room_id).merge(room_id: @room.id))
     # @entry2ではフォローされている側の情報をEntriesテーブルに保存するため。
     # users/show.html.erbのfields_for @entryで保存したparamsの情報(:user_id, :room_id)を許可し、
     # 現在ログインしているユーザーと同じく@roomにひもづくidを保存する記述をしています。
