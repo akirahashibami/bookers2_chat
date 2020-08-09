@@ -1,0 +1,201 @@
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateRooms (20200809042708)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20200809042708_create_rooms.rb:3
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809042708_create_rooms.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200809042708"]]
+  ↳ bin/rails:9
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateChats (20200809042716)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "chats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id_id" integer, "room_id_id" integer, "chat" text NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_1facb4e4ab"
+FOREIGN KEY ("user_id_id")
+  REFERENCES "user_ids" ("id")
+, CONSTRAINT "fk_rails_d82bb59bee"
+FOREIGN KEY ("room_id_id")
+  REFERENCES "room_ids" ("id")
+)[0m
+  ↳ db/migrate/20200809042716_create_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_chats_on_user_id_id" ON "chats" ("user_id_id")[0m
+  ↳ db/migrate/20200809042716_create_chats.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_chats_on_room_id_id" ON "chats" ("room_id_id")[0m
+  ↳ db/migrate/20200809042716_create_chats.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200809042716"]]
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateUserRooms (20200809042726)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "user_rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id_id" integer, "room_id_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_cb81a4a5fc"
+FOREIGN KEY ("user_id_id")
+  REFERENCES "user_ids" ("id")
+, CONSTRAINT "fk_rails_fa4ddb55e6"
+FOREIGN KEY ("room_id_id")
+  REFERENCES "room_ids" ("id")
+)[0m
+  ↳ db/migrate/20200809042726_create_user_rooms.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_user_rooms_on_user_id_id" ON "user_rooms" ("user_id_id")[0m
+  ↳ db/migrate/20200809042726_create_user_rooms.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_user_rooms_on_room_id_id" ON "user_rooms" ("room_id_id")[0m
+  ↳ db/migrate/20200809042726_create_user_rooms.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200809042726"]]
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RenameUserIdIdColumnToChats (20200809043219)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achats" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "room_id_id" integer DEFAULT NULL, "chat" text NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_achats_on_room_id_id" ON "achats" ("room_id_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_achats_on_user_id_id" ON "achats" ("user_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "achats" ("id","user_id","room_id_id","chat","created_at","updated_at")
+                     SELECT "id","user_id_id","room_id_id","chat","created_at","updated_at" FROM "chats"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (2.4ms)[0m  [1m[35mDROP TABLE "chats"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "chats" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "room_id_id" integer DEFAULT NULL, "chat" text NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_chats_on_user_id_id" ON "chats" ("user_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_chats_on_room_id_id" ON "chats" ("room_id_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "chats" ("id","user_id","room_id_id","chat","created_at","updated_at")
+                     SELECT "id","user_id","room_id_id","chat","created_at","updated_at" FROM "achats"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "achats"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_chats_on_user_id" ON "chats" ("user_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP INDEX "index_chats_on_user_id_id"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achats" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "room_id" integer DEFAULT NULL, "chat" text NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_achats_on_user_id" ON "achats" ("user_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_achats_on_room_id_id" ON "achats" ("room_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achats" ("id","user_id","room_id","chat","created_at","updated_at")
+                     SELECT "id","user_id","room_id_id","chat","created_at","updated_at" FROM "chats"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "chats"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "chats" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "room_id" integer DEFAULT NULL, "chat" text NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_chats_on_room_id_id" ON "chats" ("room_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_chats_on_user_id" ON "chats" ("user_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "chats" ("id","user_id","room_id","chat","created_at","updated_at")
+                     SELECT "id","user_id","room_id","chat","created_at","updated_at" FROM "achats"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "achats"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_chats_on_room_id" ON "chats" ("room_id")[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX "index_chats_on_room_id_id"[0m
+  ↳ db/migrate/20200809043219_rename_user_id_id_column_to_chats.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200809043219"]]
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RenameUserIdIdColumnToUserRooms (20200809043456)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_rooms" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "room_id_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_auser_rooms_on_room_id_id" ON "auser_rooms" ("room_id_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_auser_rooms_on_user_id_id" ON "auser_rooms" ("user_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "auser_rooms" ("id","user_id","room_id_id","created_at","updated_at")
+                     SELECT "id","user_id_id","room_id_id","created_at","updated_at" FROM "user_rooms"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (2.8ms)[0m  [1m[35mDROP TABLE "user_rooms"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "user_rooms" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "room_id_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_user_rooms_on_user_id_id" ON "user_rooms" ("user_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_user_rooms_on_room_id_id" ON "user_rooms" ("room_id_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "user_rooms" ("id","user_id","room_id_id","created_at","updated_at")
+                     SELECT "id","user_id","room_id_id","created_at","updated_at" FROM "auser_rooms"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "auser_rooms"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_user_rooms_on_user_id" ON "user_rooms" ("user_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mDROP INDEX "index_user_rooms_on_user_id_id"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_rooms" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "room_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_auser_rooms_on_user_id" ON "auser_rooms" ("user_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_auser_rooms_on_room_id_id" ON "auser_rooms" ("room_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "auser_rooms" ("id","user_id","room_id","created_at","updated_at")
+                     SELECT "id","user_id","room_id_id","created_at","updated_at" FROM "user_rooms"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "user_rooms"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "user_rooms" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "room_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_user_rooms_on_room_id_id" ON "user_rooms" ("room_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_user_rooms_on_user_id" ON "user_rooms" ("user_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "user_rooms" ("id","user_id","room_id","created_at","updated_at")
+                     SELECT "id","user_id","room_id","created_at","updated_at" FROM "auser_rooms"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "auser_rooms"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_user_rooms_on_room_id" ON "user_rooms" ("room_id")[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX "index_user_rooms_on_room_id_id"[0m
+  ↳ db/migrate/20200809043456_rename_user_id_id_column_to_user_rooms.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200809043456"]]
+  ↳ bin/rails:9
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
