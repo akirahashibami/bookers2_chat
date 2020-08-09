@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+<!-- サインインしてるか確認 -->
+  <% unless user.id == current_user.id %>
+  <!-- @userとcurrent_userのidが違うことを確認 -->
+    <% if haveRoom == true %>
+    <!-- users_controllerのshowアクションで作成した変数@haveRoomがtrueであることを確認。 -->
+      <%= link_to room_path(roomId), class: "col-xs-12 btn btn-default fa fa-envelope" %>
+      <!-- ルームに参加するためのリンクを表示してます！ -->
+    <% else %>
+      <%= form_with(model: room, local: ture) do |f| %>
+      <!-- form_withでデータを送信します。モデルは@roomで、local: trueで画面遷移するように命令します。 -->
+      <!-- rooms_controllerのcreateアクションを呼び出すためにこの記述をしてます！ -->
+        <%= fields_for user_room do |ur| %>
+        <!-- fields_for  form_with内で異なるモデルを編集することができるようになるもの -->
+          <%= ur.hidden_field :user_id, value: user.id %>
+          <!-- ここでやりたいことはuser_roomsテーブルにuser_idとroom_idを追加したい！！ -->
+        <%= f.submit class: "col-xs-12 btn btn-default fa fa-envelope" %>
+    <% end %>
+<% end %>
+
+<!--  -->

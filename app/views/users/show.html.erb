@@ -31,6 +31,7 @@
 	<div class="col-xs-3">
 		<h2>User info</h2>
 		<%= render 'users/profile', user: @user %>
+		<%= render 'users/contact', user: @user, haveRoom: @haveRoom, roomId: @roomId, user_room: @user_room  %>
 
 		<h2>New book</h2>
 		<%= render 'books/newform', book: @book %>
