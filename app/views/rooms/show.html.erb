@@ -8,29 +8,12 @@
   <% end %>
   <hr>
 
-    <table class="table">
-      <thead>
-      <% if @chats.present? %>
-        <% @chats.each do |c| %>
-          <% if c.user.id == current_user.id %>
-            <tr>
-              <th class="chat-face"><%= c.user.name %></th>
-              <th class="chat-message"><%= c.chat %></th>
-              <th><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></th>
-            </tr>
-          <% else %>
-            <tr class="justify-content-end">
-              <th class="chat-face"><%= c.user.name %></th>
-              <th class="chat-message"><%= c.chat %></th>
-              <th><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></th>
-            </tr>
-          <% end %>
-        <% end %>
-      <% end %>
-      </thead>
-    </table>
+    <div id="talk">
+      <%= render 'rooms/talk', chats: @chats %>
+    </div>
+
     <div class="posts">
-      <%= form_for @chat do |f| %>
+      <%= form_with model: [@chat] do |f| %>
         <%= f.text_area :chat, rows:'3', placeholder: "メッセージ...", class: "form-text-field" %>
         <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.submit "送信", class: "form-submit" %>

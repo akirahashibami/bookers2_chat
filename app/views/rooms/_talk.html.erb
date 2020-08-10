@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+  <% if chats.present? %>
+    <% chats.each do |c| %>
+      <% if c.user.id == current_user.id %>
+        <tr class="me">
+          <th class="chat-face">
+            <%= attachment_image_tag c.user, :profile_image, size: '40x40' %> <br>
+            <%= c.user.name %>
+          </th>
+          <th class="chat-message"><%= c.chat %></th>
+          <th><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></th>
+          <th><%= link_to "Delete", chat_path(c.id), method: :delete, class: "btn btn-danger btn-md" %></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      <% else %>
+        <tr class="opponent">
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th class="chat-face">
+            <%= attachment_image_tag c.user, :profile_image, size: '40x40' %> <br>
+            <%= c.user.name %>
+          </th>
+          <th class="chat-message"><%= c.chat %></th>
+          <th><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></th>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+  </thead>
+</table>

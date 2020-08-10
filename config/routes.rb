@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   end
 
   resources :rooms, only: [:create, :show]
-  resources :chats, only: [:create]
+  resources :chats, only: [:create, :destroy]
 
 end
